@@ -86,6 +86,11 @@ fun MainContent(modifier: Modifier = Modifier) {
     ) {
 
         Spacer(modifier = Modifier.height(24.dp))
+
+        AmountDisplay()
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         // todo: Add Row with app icon, app name, and right arrow
         AppButtonsList()
         Spacer(modifier = Modifier.height(16.dp))
@@ -94,7 +99,6 @@ fun MainContent(modifier: Modifier = Modifier) {
 
 
 
-        Spacer(modifier = Modifier.height(16.dp))
 
         ExpansionTile(
             title = "All Payment Options",
@@ -104,9 +108,19 @@ fun MainContent(modifier: Modifier = Modifier) {
         )
 
 
-        Spacer(modifier = Modifier.height(64.dp))
-        // TODO: Amount and Continue button Row
-        AmountRowCard()
+        Spacer(modifier = Modifier.height(24.dp))
+
+
+        Button(
+            onClick = { Log.d("ButtonClick", "Continue clicked") },
+            shape = RoundedCornerShape(8.dp),
+            modifier = Modifier
+                .height(64.dp)
+                .fillMaxWidth()
+        ) {
+
+            Text(text = "Continue", fontSize = 20.sp, color = Color.White, fontWeight = FontWeight.Bold,)
+        }
     }
 }
 
@@ -170,6 +184,29 @@ fun RecommendedUpiAppCard(
         }
     }
 }
+
+
+@Composable
+fun AmountDisplay() {
+    Column(modifier = Modifier.padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Amount",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Normal,
+            color = Color.Gray
+        )
+        Spacer(modifier = Modifier.height(12.dp))
+        Text(
+            text = "₹1000",
+            fontSize = 48.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.Black
+        )
+    }
+}
+
 
 @Composable
 fun AppButtonsList() {
@@ -240,11 +277,12 @@ fun ExpansionTile(title: String, content: @Composable (visibleButtons: List<Stri
 
 
     // Determine which buttons to show based on expansion state
-    val visibleButtons = if (isExpanded) buttonList else buttonList.take(4)
+    val visibleButtons = if (isExpanded) buttonList else buttonList.take(8)
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .fillMaxHeight(0.775f)
             .border(
                 width = 1.dp, // Border width
                 color = Color(0xFFE9E9E9), // Border color
@@ -374,13 +412,7 @@ fun AmountRowCard() {
             )
 
             // Continue button
-            Button(
-                onClick = { Log.d("ButtonClick", "Continue clicked") },
-                shape = RoundedCornerShape(8.dp),
-                modifier = Modifier.height(40.dp)
-            ) {
-                Text(text = "Continue", fontSize = 14.sp, color = Color.White)
-            }
+
         }
     }
 }
@@ -397,3 +429,6 @@ fun MainContentPreview() {
         }
     }
 }
+
+
+
