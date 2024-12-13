@@ -114,6 +114,7 @@ fun MainContent(modifier: Modifier = Modifier) {
         Button(
             onClick = { Log.d("ButtonClick", "Continue clicked") },
             shape = RoundedCornerShape(8.dp),
+            colors = ButtonDefaults.buttonColors(contentColor = Color(0xFF3F51B5)  ),
             modifier = Modifier
                 .height(64.dp)
                 .fillMaxWidth()
@@ -193,8 +194,8 @@ fun AmountDisplay() {
     ) {
         Text(
             text = "Amount",
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Normal,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold,
             color = Color.Gray
         )
         Spacer(modifier = Modifier.height(12.dp))
@@ -282,7 +283,7 @@ fun ExpansionTile(title: String, content: @Composable (visibleButtons: List<Stri
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(0.775f)
+//            .fillMaxHeight(0.775f)
             .border(
                 width = 1.dp, // Border width
                 color = Color(0xFFE9E9E9), // Border color
